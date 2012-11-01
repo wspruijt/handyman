@@ -20,3 +20,8 @@ find . -name .svn -exec 'rm -rf {}\;'
 ls -latr
 alias ls='ls -latr' # Add to your .bashrc/.zshrc to make the options default
 
+# --- Convert files ERB to HAML ---
+# Make sure you installed the gems: haml,hpricot, ruby_parser
+for i in `find app/views/ -name '*.erb'` ; do html2haml -e $i ${i%erb}haml ; done
+# And remove erb..
+for i in `find app/views/ -name '*.erb'` ; do rm $i ; done
