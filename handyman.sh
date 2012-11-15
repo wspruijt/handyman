@@ -34,3 +34,8 @@ for i in `find app/views/ -name '*.erb'` ; do rm $i ; done
 # Undo last commit (not yet pushed)
 git reset --soft HEAD~1
 
+# Configure that a branch - other than master - will be pushed to heroku
+# http://stackoverflow.com/questions/2401254/git-push-current-branch-to-a-remote-with-heroku
+# Example git config remote.heroku.push feature-awesome-sauce:master
+git config remote.[remoteRepositoryName].push [localBranchName]:[remoteBranchName]
+
