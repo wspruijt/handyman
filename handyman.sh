@@ -50,3 +50,28 @@ Dir['**/*.rb'].each { |f|
   s.gsub!(awesome_rx, '\1\2:')
   puts "#{count} replacements @ #{f}"
   open(f, 'w') { |b| b << s } }
+
+# --- Github ---
+# Generate a Github oauth token to use private gem s in your Gemfile
+curl -u 'username' -d '{"scopes":["repo"],"note":"Help example"}' https://api.github.com/authorizations
+# Enter host password for user 'username': [type password]
+#
+# Response:
+#
+# {
+#   "scopes": [
+#     "repo"
+#   ],
+#   "token": "your_token",
+#   "app": {
+#     "url": "http://developer.github.com/v3/oauth/#oauth-authorizations-api",
+#     "name": "Help example (API)"
+#   },
+#   "url": "https://api.github.com/authorizations/123456",
+#   "note": "Help example",
+#   "note_url": null,
+#   "id": 123456,
+# }
+#
+# In your Gemfile:
+# gem 'awesomegem', git: your_token@:x-oauth-basic@github.com/username/repos
