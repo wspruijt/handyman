@@ -18,6 +18,9 @@ find . -name .svn -exec 'rm -rf {}\;'
 # Recursively delete all .- directories under a specific directory
 find . -name "._*" -exec 'rm -rf {}\;'
 
+# --- Remove all trailing whitespace from files ---
+find . -type f -name '*.rb' -exec sed --in-place 's/[[:space:]]\+$//' {} \+
+
 # --- Useful ls  ----
 # List (l) all (a) files and directories, order by modification date (t), reversed (r)
 # Mnemonic: ls -lat(e)r
